@@ -2,11 +2,18 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const API_KEY = '6f3a72a470b06bab99f8d69f54b4e2d3';
-const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
+const BASE_URL = 'https://api.themoviedb.org/3/';
 
-export const moviesApi = async (searchQuery, page) => {
+// endpoint
+// /trending/get-trending список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці.
+// /search/search-movies пошук фільму за ключовим словом на сторінці фільмів.
+// /movies/get-movie-details запит повної інформації про фільм для сторінки кінофільму.
+// /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
+// /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
+
+export const moviesApi = async (searchQuery, page, endpoint) => {
   try {
-    const { data } = await axios.get(BASE_URL, {
+    const { data } = await axios.get(BASE_URL, endpoint, {
       params: {
         key: API_KEY,
         query: searchQuery,
@@ -17,10 +24,6 @@ export const moviesApi = async (searchQuery, page) => {
   } catch (error) {
     console.error(error);
   }
-
-  return axios('search/movie', {
-    params: { api_key: API_KEY, page, searchQuery },
-  });
 };
 
 moviesApi.propTypes = {
