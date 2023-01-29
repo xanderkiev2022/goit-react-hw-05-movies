@@ -26,9 +26,9 @@ export function Movies() {
           {movies.map(({ id, poster_path, title }) => {
             return (
               <li key={id}>
-                <Link to={`/movies/${id}`} cover={poster_path}>
+                <Navigate to={`/movies/${id}`} cover={poster_path}>
                   {title}
-                </Link>
+                </Navigate>
                 {/* <MovieDetails id={id} /> */}
               </li>
             );
