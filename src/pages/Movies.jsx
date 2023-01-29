@@ -13,10 +13,11 @@ export function MoviesGallery() {
       <h2>Trending today</h2>
       {moviesGallery.length > 0 && (
         <ul>
-          {movies.map(({ id }) => {
+          {movies.map(({ id, title }) => {
             return (
               <li key={id}>
-                <MovieDetails id={id} />
+                {title}
+                {/* <MovieDetails id={id} /> */}
               </li>
             );
           })}
