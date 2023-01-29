@@ -6,7 +6,7 @@ export function MoviesGallery({ movies }) {
         {movies.map(({ id, ...restProps }) => {
           return (
             <li key={id}>
-              <MovieDetails />
+              <MovieDetails {...restProps} />
             </li>
           );
         })}
