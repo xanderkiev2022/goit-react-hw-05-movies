@@ -11,7 +11,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 // /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
 // /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
 
-export const moviesApi = async (searchQuery, page, endpoint) => {
+export const moviesApi = async (endpoint, searchQuery, page) => {
   try {
     const { data } = await axios.get(BASE_URL, endpoint, {
       params: {
