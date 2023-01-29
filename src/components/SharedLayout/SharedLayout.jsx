@@ -1,28 +1,19 @@
+import { Outlet } from 'react-router-dom';
+
 export const SharedLayout = () => {
   return (
     <Container>
-      <nav>
-        <Link to="/" end>
-          Home
-        </Link>
-        <Link to="/about">About</Link>
-        <Link to="/products">Products</Link>
-      </nav>
-
+      <Header>
+        <nav>
+          <Link to="/" end onClick={e => e.currentTarget.blur()}>
+            Home
+          </Link>
+          <Link to="/movies" onClick={e => e.currentTarget.blur()}>
+            Movies
+          </Link>
+        </nav>
+      </Header>
       <Outlet />
     </Container>
   );
 };
-
-return (
-  <Routes>
-    <Route path="/" element={<SharedLayout />}>
-      <Route index element={<Home />} />
-      <Route path="movies" element={<Movies />} />
-      <Route path="movies/:movieId" element={<MovieDetails />}>
-        <Route path="cast" element={<Cast />} />
-        <Route path="reviews" element={<Reviews />} />
-      </Route>
-    </Route>
-  </Routes>
-);
