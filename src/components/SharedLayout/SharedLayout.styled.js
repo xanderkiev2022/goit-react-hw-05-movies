@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  max-width: 960px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
 `;
@@ -21,7 +21,7 @@ export const Header = styled.header`
   }
 `;
 
-export const Link = styled(NavLink)`
+export const LinkStyled = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
