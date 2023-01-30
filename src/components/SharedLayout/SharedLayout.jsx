@@ -1,19 +1,22 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
+import { Suspense } from 'react';
 
 export const SharedLayout = () => {
   return (
-    <Container>
-      <Header>
+    <div>
+      <header>
         <nav>
-          <Link to="/" end onClick={e => e.currentTarget.blur()}>
+          <NavLink to="/" end onClick={e => e.currentTarget.blur()}>
             Home
-          </Link>
-          <Link to="/movies" onClick={e => e.currentTarget.blur()}>
+          </NavLink>
+          <NavLink to="/movies" onClick={e => e.currentTarget.blur()}>
             Movies
-          </Link>
+          </NavLink>
         </nav>
-      </Header>
-      <Outlet />
-    </Container>
+      </header>
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
+    </div>
   );
 };

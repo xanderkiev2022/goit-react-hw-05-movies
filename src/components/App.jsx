@@ -1,6 +1,7 @@
 // Додай асинхронне завантаження JS-коду для маршрутів застосунку, використовуючи React.lazy() і Suspense.
 
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { lazy } from 'react';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
 const Home = lazy(() => import('../pages/Home'));
