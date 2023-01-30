@@ -25,21 +25,15 @@ export default function Home() {
       <div>
         <div>
           <Gallery>
-            {trendMovies.map(movie => {
+            {trendMovies.map(({ id, title, poster_path }) => {
               return (
-                <GalleryItem key={movie.id}>
-                  <Link
-                    to={`/movies/${movie.id}`}
-                    state={{ location }}
-                    key={movie.id}
-                  >
+                <GalleryItem key={id}>
+                  <Link to={`/movies/${id}`} state={{ location }} key={id}>
                     <Img
-                      src={`https://image.tmdb.org/t/p/w300${movie.poster_path} `}
-                      alt={movie.title}
+                      src={`https://image.tmdb.org/t/p/w300${poster_path} `}
+                      alt={title}
                     />
-                    <Title>
-                      {movie.title ? movie.title : ' No information'}
-                    </Title>
+                    <Title>{title ? title : ' No information'}</Title>
                   </Link>
                 </GalleryItem>
               );
