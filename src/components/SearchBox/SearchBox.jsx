@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function SearchBox({ updateQueryString }) {
+export default function SearchBox({ onChange }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleChange = e => {
@@ -15,7 +15,8 @@ export default function SearchBox({ updateQueryString }) {
     if (!searchQuery) {
       return;
     }
-    updateQueryString(searchQuery.trim());
+    onChange(searchQuery.trim());
+    console.log('searchQuery :>> ', searchQuery);
     setSearchQuery('');
   };
 

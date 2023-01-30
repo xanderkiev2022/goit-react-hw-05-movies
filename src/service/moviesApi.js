@@ -26,6 +26,21 @@ export const moviesApi = async (endpoint, searchQuery, page) => {
   }
 };
 
+export const fetchTrendMovies = async () => {
+  const { data } = await axios.get(
+    `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
+  );
+
+  return data.results;
+};
+
+export const fetchMovies = async movie => {
+  const { data } = await axios.get(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${movie}`
+  );
+  return data.results;
+};
+
 moviesApi.propTypes = {
   searchQuery: PropTypes.string.isRequired,
   page: PropTypes.number.isRequired,

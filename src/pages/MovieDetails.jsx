@@ -5,9 +5,9 @@ import { moviesApi } from 'service/moviesApi';
 export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const backLink = location?.state?.from ?? '/';
 
   const location = useLocation();
+  const backLink = location?.state?.from ?? '/';
 
   useEffect(() => {
     moviesApi('/movies/get-movie-details', movieId).then(setMovie);
