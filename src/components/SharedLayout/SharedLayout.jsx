@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
 
-export const SharedLayout = () => {
+export default function SharedLayout() {
   return (
     <div>
       <header>
@@ -19,4 +19,4 @@ export const SharedLayout = () => {
       </Suspense>
     </div>
   );
-};
+}

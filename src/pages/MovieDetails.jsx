@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useLocation, Navigate, Outlet } from 'react-router-dom';
 import { moviesApi } from 'service/moviesApi';
 
-export function MovieDetails() {
+export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const backLink = location?.state?.from ?? '/';
@@ -11,7 +11,7 @@ export function MovieDetails() {
 
   useEffect(() => {
     moviesApi('/movies/get-movie-details', movieId).then(setMovie);
-  }, [id]);
+  }, [movieId]);
 
   if (!movie) {
     return;

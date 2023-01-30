@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export const Searchbar = ({ updateQueryString }) => {
+export default function SearchBox({ updateQueryString }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleChange = e => {
@@ -24,8 +25,8 @@ export const Searchbar = ({ updateQueryString }) => {
       <button> Search</button>
     </form>
   );
-};
+}
 
-Searchbar.propTypes = {
+SearchBox.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };

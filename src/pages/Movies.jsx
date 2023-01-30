@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { moviesApi } from 'service/moviesApi';
+import { Navigate } from 'react-router-dom';
+import SearchBox from 'components/SearchBox/SearchBox';
 
-export function Movies() {
+export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,7 +20,7 @@ export function Movies() {
 
   return (
     <>
-      <SearchForm value={searchQuery} onChange={updateQueryString} />
+      <SearchBox value={searchQuery} onChange={updateQueryString} />
 
       <h2>Trending today</h2>
       {movies.length > 0 && (
