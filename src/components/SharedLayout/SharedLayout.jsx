@@ -1,22 +1,23 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
+import { Container, Header, Link } from './SharedLayout.styled';
 
 export default function SharedLayout() {
   return (
-    <div>
-      <header>
+    <Container>
+      <Header>
         <nav>
-          <NavLink to="/" end onClick={e => e.currentTarget.blur()}>
+          <Link to="/" end onClick={e => e.currentTarget.blur()}>
             Home
-          </NavLink>
-          <NavLink to="/movies" onClick={e => e.currentTarget.blur()}>
+          </Link>
+          <Link to="/movies" onClick={e => e.currentTarget.blur()}>
             Movies
-          </NavLink>
+          </Link>
         </nav>
-      </header>
+      </Header>
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </Container>
   );
 }
