@@ -24,6 +24,7 @@ export default function Home() {
     <>
       <div>
         <div>
+          <h2>Trending today</h2>
           <Gallery>
             {trendMovies.map(({ id, title, poster_path }) => {
               return (

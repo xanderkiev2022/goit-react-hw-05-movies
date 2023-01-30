@@ -1,27 +1,36 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation, Navigate, Outlet } from 'react-router-dom';
-import { moviesApi } from 'service/moviesApi';
+import {
+  useParams,
+  useLocation,
+  Navigate,
+  Outlet,
+  Link,
+} from 'react-router-dom';
+import { fetchMoviesById } from 'service/moviesApi';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
+  console.log('movieId :>> ', movieId);
   const [movie, setMovie] = useState(null);
 
   const location = useLocation();
   const backLink = location?.state?.from ?? '/';
 
   useEffect(() => {
-    moviesApi('/movies/get-movie-details', movieId).then(setMovie);
+    fetchMoviesById(movieId).then(setMovie);
   }, [movieId]);
 
   if (!movie) {
     return;
   }
 
+  console.log('movie :>> ', movie);
+
   //   const { title, vote_count: votes, backdrop_path: img } = movie;
 
   return (
     <>
-      <Navigate to={backLink} />
+      {/* <Navigate to={backLink} /> */}
 
       <div>
         <div>
@@ -45,8 +54,10 @@ export default function MovieDetails() {
       </div>
 
       <div>
-        <Navigate to="cast">Cast</Navigate>
-        <Navigate to="reviews">Reviews</Navigate>
+        {/* <Navigate to="cast">Cast</Navigate>
+        <Navigate to="reviews">Reviews</Navigate> */}
+        <Link to="cast">Cast</Link>
+        <Link to="reviews">Reviews</Link>
       </div>
       <div>
         <Outlet />

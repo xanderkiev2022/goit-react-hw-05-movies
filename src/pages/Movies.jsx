@@ -1,13 +1,15 @@
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import { moviesApi } from 'service/moviesApi';
-import { fetchMovies } from 'service/moviesApi';
-import { Navigate } from 'react-router-dom';
+import { fetchMoviesbyName } from 'service/moviesApi';
+// import { Navigate } from 'react-router-dom';
 import SearchBox from 'components/SearchBox/SearchBox';
+import { Gallery, GalleryItem, Img } from './Home.styled';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
 
   const updateQueryString = query => {
     setSearchQuery(query);
@@ -18,7 +20,7 @@ export default function Movies() {
 
   const getMovies = async searchQuery => {
     try {
-      await fetchMovies(searchQuery).then(res => setMovies(res));
+      await fetchMoviesbyName(searchQuery).then(res => setMovies(res));
     } catch (error) {
       console.log(error);
     }
@@ -28,30 +30,28 @@ export default function Movies() {
     if (searchQuery === '') {
       return;
     }
-    // moviesApi('/trending/get-trending').then(setMovies);
-    // fetchMovies.then(data => {
-    //   setMovies([...data.results]);
-    // });
     getMovies(searchQuery);
   }, [searchQuery]);
 
   return (
     <>
       <SearchBox onChange={updateQueryString} />
-      <h2>Trending today</h2>
       {movies.length > 0 && (
-        <ul>
-          {movies.map(({ id, poster_path, title }) => {
+        <Gallery>
+          {movies.map(({ id, title, poster_path }) => {
             return (
-              <li key={id}>
-                <Navigate to={`/movies/${id}`} cover={poster_path}>
-                  {title}
-                </Navigate>
-                {/* <MovieDetails id={id} /> */}
-              </li>
+              <GalleryItem key={id}>
+                <Link to={`/movies/${id}`} state={{ location }} key={id}>
+                  <Img
+                    src={`https://image.tmdb.org/t/p/w300${poster_path} `}
+                    alt={title}
+                  />
+                  <p>{title ? title : ' No information'}</p>
+                </Link>
+              </GalleryItem>
             );
           })}
-        </ul>
+        </Gallery>
       )}
     </>
   );
