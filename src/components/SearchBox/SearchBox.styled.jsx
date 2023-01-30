@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  max-width: 220px;
+  max-width: 200px;
   border: var(--border);
   border-radius: 4px;
   background-color: #2c2d31;
