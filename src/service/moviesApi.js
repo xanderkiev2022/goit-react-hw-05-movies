@@ -18,7 +18,7 @@ export const fetchTrendMovies = async () => {
 export const fetchMoviesbyName = async searchQuery => {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`
     );
     return data.results;
   } catch (error) {
@@ -29,7 +29,7 @@ export const fetchMoviesbyName = async searchQuery => {
 export const fetchMoviesById = async searchQuery => {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/movie/${searchQuery}?api_key=${API_KEY}&language=en-US`
+      `${BASE_URL}/movie/${searchQuery}?api_key=${API_KEY}`
     );
     return data;
   } catch (error) {
@@ -40,7 +40,7 @@ export const fetchMoviesById = async searchQuery => {
 export const fetchCast = async searchQuery => {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/movie/${searchQuery}/credits?api_key=${API_KEY}&language=en-US`
+      `${BASE_URL}/movie/${searchQuery}/credits?api_key=${API_KEY}`
     );
     return data.cast;
   } catch (error) {
@@ -51,7 +51,7 @@ export const fetchCast = async searchQuery => {
 export const fetchReviews = async searchQuery => {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}/movie/${searchQuery}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+      `${BASE_URL}/movie/${searchQuery}/reviews?api_key=${API_KEY}&page=1`
     );
     return data.results;
   } catch (error) {

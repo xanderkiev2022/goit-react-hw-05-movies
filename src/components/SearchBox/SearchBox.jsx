@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Form, Input, Button } from './SearchBox.styled';
 
 export default function SearchBox({ onChange }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,10 +22,10 @@ export default function SearchBox({ onChange }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={searchQuery} onChange={handleChange} />
-      <button> Search</button>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Input type="text" value={searchQuery} onChange={handleChange} />
+      <Button> Search</Button>
+    </Form>
   );
 }
 

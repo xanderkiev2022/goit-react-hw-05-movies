@@ -25,11 +25,11 @@ export const LinkStyled = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: var(--primary-text-color);
   font-weight: 500;
 
   &.active {
     color: white;
-    background-color: orangered;
+    background-color: var(--accent-color);
   }
 `;
