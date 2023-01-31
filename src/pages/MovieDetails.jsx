@@ -16,14 +16,15 @@ import {
   Text,
   StyledLink,
 } from './Movie.details.styled';
+import { BackLink } from 'components/BackLink';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   console.log('movieId :>> ', movieId);
   const [movie, setMovie] = useState(null);
 
-  // const location = useLocation();
-  // const backLink = location?.state?.from ?? '/';
+  const location = useLocation();
+  const backLinkHref = location?.state?.from ?? '/movies';
 
   useEffect(() => {
     fetchMoviesById(movieId).then(setMovie);
@@ -39,8 +40,7 @@ export default function MovieDetails() {
 
   return (
     <>
-      {/* <Navigate to={backLink} /> */}
-
+      <BackLink to={backLinkHref}>Back to movies</BackLink>
       <Wrapper>
         <div>
           <Img
@@ -61,10 +61,7 @@ export default function MovieDetails() {
           </div>
         </Info>
       </Wrapper>
-
       <div>
-        {/* <Navigate to="cast">Cast</Navigate>
-        <Navigate to="reviews">Reviews</Navigate> */}
         <StyledLink to="cast">Cast</StyledLink>
         <StyledLink to="reviews">Reviews</StyledLink>
       </div>
