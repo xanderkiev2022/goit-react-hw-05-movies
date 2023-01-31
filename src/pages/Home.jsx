@@ -6,18 +6,11 @@ import { ButtonLoadMore } from 'components/Button/Button';
 
 export default function Home() {
   const [trendMovies, setTrendMovies] = useState([]);
-  // const [page, setPage] = useSearchParams('1');
-  // const currentPage = page.get('page') ?? '1';
   const location = useLocation();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   const loadMore = () => {
-    // if (page === currentPage) {
-    // return;
-    // }
-    // let newPage = 2;
-    // setPage({ page: newPage });
     setPage(prevPage => prevPage + 1);
   };
 
