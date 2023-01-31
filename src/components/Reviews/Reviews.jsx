@@ -1,6 +1,7 @@
 import { fetchReviews } from 'service/moviesApi';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Wrapper, List, Item, Author } from './Reviews.styled';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -20,16 +21,16 @@ export default function Reviews() {
 
   return (
     <>
-      <div>
-        <div>
+      <Wrapper>
+        <List>
           {movieReviews.length ? (
             movieReviews.map(review => {
               const { id, author, content } = review;
               return (
-                <div key={id}>
-                  <h3>{author}</h3>
+                <Item key={id}>
+                  <Author>{author}</Author>
                   <p>{content}</p>
-                </div>
+                </Item>
               );
             })
           ) : (
@@ -37,8 +38,8 @@ export default function Reviews() {
               <p>There are no reviews</p>
             </div>
           )}
-        </div>
-      </div>
+        </List>
+      </Wrapper>
     </>
   );
 }
