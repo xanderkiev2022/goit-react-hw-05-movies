@@ -1,6 +1,7 @@
 import { fetchCast } from 'service/moviesApi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Wrapper, List, Item, H3, H4, Img, InnerWrapper } from './Cast.styled';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -20,26 +21,30 @@ export default function Cast() {
 
   return (
     <>
-      <div>
-        {movieCast
-          ? movieCast.map(actor => {
-              return (
-                <div key={actor.id}>
-                  <p>{actor.original_name}</p>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
-                    alt={actor.original_name}
-                  />
+      <Wrapper>
+        <List>
+          {movieCast
+            ? movieCast.map(actor => {
+                return (
+                  <Item key={actor.id}>
+                    <Img
+                      src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
+                      alt={actor.original_name}
+                    />
+                    <InnerWrapper>
+                      <H3>{actor.original_name}</H3>
 
-                  <p>
-                    Character: <br />
-                    {actor.character}
-                  </p>
-                </div>
-              );
-            })
-          : 'oops'}
-      </div>
+                      <H4>
+                        Character:
+                        {' ' + actor.character}
+                      </H4>
+                    </InnerWrapper>
+                  </Item>
+                );
+              })
+            : 'Something went wrong'}
+        </List>
+      </Wrapper>
     </>
   );
 }

@@ -7,14 +7,23 @@ import {
   Link,
 } from 'react-router-dom';
 import { fetchMoviesById } from 'service/moviesApi';
+import {
+  Wrapper,
+  Img,
+  Info,
+  Title,
+  H3,
+  Text,
+  StyledLink,
+} from './Movie.details.styled';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   console.log('movieId :>> ', movieId);
   const [movie, setMovie] = useState(null);
 
-  const location = useLocation();
-  const backLink = location?.state?.from ?? '/';
+  // const location = useLocation();
+  // const backLink = location?.state?.from ?? '/';
 
   useEffect(() => {
     fetchMoviesById(movieId).then(setMovie);
@@ -32,32 +41,32 @@ export default function MovieDetails() {
     <>
       {/* <Navigate to={backLink} /> */}
 
-      <div>
+      <Wrapper>
         <div>
-          <img
+          <Img
             src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}
             alt={movie?.title}
           />
         </div>
-        <div>
-          <h2>{movie?.title}</h2>
-          <p>User Score: {Math.round(movie?.vote_average) * 10}%</p>
+        <Info>
+          <Title>{movie?.title}</Title>
+          <H3>User Score: {Math.round(movie?.vote_average) * 10}%</H3>
           <div>
-            <h3>Overview</h3>
-            <p>{movie?.overview}</p>
+            <H3>Overview</H3>
+            <Text>{movie?.overview}</Text>
           </div>
           <div>
-            <h3>Genres</h3>
-            <p> {movie?.genres?.map(genre => genre.name).join(', ')}</p>
+            <H3>Genres</H3>
+            <Text> {movie?.genres?.map(genre => genre.name).join(', ')}</Text>
           </div>
-        </div>
-      </div>
+        </Info>
+      </Wrapper>
 
       <div>
         {/* <Navigate to="cast">Cast</Navigate>
         <Navigate to="reviews">Reviews</Navigate> */}
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <StyledLink to="cast">Cast</StyledLink>
+        <StyledLink to="reviews">Reviews</StyledLink>
       </div>
       <div>
         <Outlet />
