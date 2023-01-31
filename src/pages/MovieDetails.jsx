@@ -15,16 +15,15 @@ import {
   H3,
   Text,
   StyledLink,
+  ExtraMenu,
 } from './Movie.details.styled';
 import { BackLink } from 'components/BackLink';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
-  console.log('movieId :>> ', movieId);
   const [movie, setMovie] = useState(null);
-
   const location = useLocation();
-  const backLinkHref = location?.state?.from ?? '/movies';
+  const backLinkHref = location?.state ?? '/';
 
   useEffect(() => {
     fetchMoviesById(movieId).then(setMovie);
@@ -33,10 +32,6 @@ export default function MovieDetails() {
   if (!movie) {
     return;
   }
-
-  console.log('movie :>> ', movie);
-
-  //   const { title, vote_count: votes, backdrop_path: img } = movie;
 
   return (
     <>
@@ -61,10 +56,10 @@ export default function MovieDetails() {
           </div>
         </Info>
       </Wrapper>
-      <div>
+      <ExtraMenu>
         <StyledLink to="cast">Cast</StyledLink>
         <StyledLink to="reviews">Reviews</StyledLink>
-      </div>
+      </ExtraMenu>
       <div>
         <Outlet />
       </div>

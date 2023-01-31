@@ -1,7 +1,7 @@
 import { fetchReviews } from 'service/moviesApi';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Wrapper, List, Item, Author } from './Reviews.styled';
+import { Wrapper, List, Item, Author, NoInfoDiv } from './Reviews.styled';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -34,9 +34,9 @@ export default function Reviews() {
               );
             })
           ) : (
-            <div>
+            <NoInfoDiv>
               <p>There are no reviews</p>
-            </div>
+            </NoInfoDiv>
           )}
         </List>
       </Wrapper>

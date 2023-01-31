@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   max-height: 500px;
-  overflow-y: scroll;
+  //overflow-y: scroll;
 `;
 
 export const List = styled.ul`
@@ -27,6 +27,12 @@ export const Item = styled.li`
 `;
 
 export const Author = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+`;
+
+export const NoInfoDiv = styled.p`
+  margin-top: 15px;
   font-size: 20px;
   font-weight: 600;
 `;

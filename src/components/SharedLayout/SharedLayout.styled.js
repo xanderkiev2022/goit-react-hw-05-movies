@@ -27,7 +27,6 @@ export const LinkStyled = styled(NavLink)`
   text-decoration: none;
   color: var(--primary-text-color);
   font-weight: 500;
-
   &.active {
     color: white;
     background-color: var(--accent-color);

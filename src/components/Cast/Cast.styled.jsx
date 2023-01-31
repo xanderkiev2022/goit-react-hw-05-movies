@@ -4,11 +4,12 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   max-height: 500px;
-  overflow-y: scroll;
+  //overflow-y: scroll;
 `;
 
 export const InnerWrapper = styled.div`
   margin-left: 10px;
+  height: 100px;
 `;
 
 export const List = styled.ul`
@@ -30,10 +31,11 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  display: flex;
+  // display: flex;
   gap: 5px;
-  margin-bottom: 15px;
-  padding: 5px;
+  //margin-bottom: 15px;
+  padding: 15px;
+  //border: var(--border);
   &:last-child {
     margin-bottom: 0;
   }
@@ -53,7 +55,9 @@ export const H4 = styled.p`
 `;
 
 export const Img = styled.img`
-  width: 40%;
+  //width: 150px;
+  width: 100%;
+  height: 350px;
   object-fit: cover;
   border-radius: 4px;
   box-shadow: var(--box-shadow);
