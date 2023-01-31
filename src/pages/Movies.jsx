@@ -1,7 +1,6 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchMoviesbyName } from 'service/moviesApi';
-// import { Navigate } from 'react-router-dom';
 import SearchBox from 'components/SearchBox/SearchBox';
 import { Gallery, GalleryItem, Img, LinkStyled, Title } from './Home.styled';
 import { useContextHook } from 'components/Context';
@@ -11,13 +10,10 @@ export default function Movies() {
   const { movies, setMovies } = useContextHook();
   const [searchParams, setSearchParams] = useSearchParams('');
   const currentQuery = searchParams.get('query') ?? '';
-  // const [searchQuery, setSearchQuery] = useState('');
   const [status, setStatus] = useState('');
   const location = useLocation();
-  console.log('Movie location :>> ', location);
 
   const updateQueryString = query => {
-    // setSearchQuery(query);
     if (query === currentQuery) {
       return;
     }
@@ -25,21 +21,10 @@ export default function Movies() {
       setMovies([]);
       return;
     }
-    // const nextParams = query !== '' ? { query } : {};
     setSearchParams({ query: query });
     setMovies([]);
   };
 
-  const getMovies = async searchQuery => {
-    try {
-      await fetchMoviesbyName(searchQuery).then(res => {
-        setMovies(res);
-        setStatus('resolved');
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
     if (!movies) return;
     setStatus('resolved');
@@ -47,8 +32,20 @@ export default function Movies() {
 
   useEffect(() => {
     if (currentQuery === '') return;
+
+    const getMovies = async searchQuery => {
+      try {
+        await fetchMoviesbyName(searchQuery).then(res => {
+          setMovies(res);
+          setStatus('resolved');
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getMovies(currentQuery);
-  }, [currentQuery]);
+  }, [currentQuery, setMovies]);
 
   if (status === 'resolved') {
     return (

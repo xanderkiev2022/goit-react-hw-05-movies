@@ -20,26 +20,24 @@ export default function Reviews() {
   }, [movieId]);
 
   return (
-    <>
-      <Wrapper>
-        <List>
-          {movieReviews.length ? (
-            movieReviews.map(review => {
-              const { id, author, content } = review;
-              return (
-                <Item key={id}>
-                  <Author>{author}</Author>
-                  <p>{content}</p>
-                </Item>
-              );
-            })
-          ) : (
-            <NoInfoDiv>
-              <p>There are no reviews</p>
-            </NoInfoDiv>
-          )}
-        </List>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <List>
+        {movieReviews.length ? (
+          movieReviews.map(review => {
+            const { id, author, content } = review;
+            return (
+              <Item key={id}>
+                <Author>{author}</Author>
+                <p>{content}</p>
+              </Item>
+            );
+          })
+        ) : (
+          <NoInfoDiv>
+            <p>There are no reviews</p>
+          </NoInfoDiv>
+        )}
+      </List>
+    </Wrapper>
   );
 }

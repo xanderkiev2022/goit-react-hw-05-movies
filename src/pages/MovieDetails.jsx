@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  useParams,
-  useLocation,
-  Navigate,
-  Outlet,
-  Link,
-} from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { fetchMoviesById } from 'service/moviesApi';
 import {
   Wrapper,

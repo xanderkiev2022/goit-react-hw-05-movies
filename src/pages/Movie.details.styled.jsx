@@ -54,23 +54,13 @@ export const Text = styled.span`
 `;
 
 export const ExtraMenu = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  //margin: 0, auto;
-  //margin-right: 20px;
-  //margin-left: auto;
-  padding: 10px;
-  color: var(--primary-text-color);
-  font-weight: 600;
-  font-size: 25px;
-  //margin-top: 0;
-  //margin-bottom: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
 `;
 
 export const StyledLink = styled(Link)`
-  //padding: 0, 15px;
-
   color: var(--primary-text-color);
   font-weight: 600;
   font-size: 25px;
+  margin-right: 20px;
 `;
