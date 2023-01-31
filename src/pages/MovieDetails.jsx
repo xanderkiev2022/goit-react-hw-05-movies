@@ -12,6 +12,7 @@ import {
   ExtraMenu,
 } from './Movie.details.styled';
 import { BackLink } from 'components/BackLink';
+import noPicture from '../images/no_picture.jpg';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
@@ -33,7 +34,11 @@ export default function MovieDetails() {
       <Wrapper>
         <div>
           <Img
-            src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+                : noPicture
+            }
             alt={movie?.title}
           />
         </div>
