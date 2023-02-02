@@ -11,6 +11,7 @@ export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams('');
   const currentQuery = searchParams.get('query') ?? '';
   const [status, setStatus] = useState('');
+  const [totalPages, setTotalPages] = useState(1);
   const location = useLocation();
 
   const updateQueryString = query => {
@@ -35,10 +36,10 @@ export default function Movies() {
 
     const getMovies = async searchQuery => {
       try {
-        await fetchMoviesbyName(searchQuery).then(res => {
-          setMovies(res);
-          setStatus('resolved');
-        });
+        const { results, total_pages } = await fetchMoviesbyName(searchQuery);
+        setMovies(results);
+        setTotalPages(total_pages);
+        setStatus('resolved');
       } catch (error) {
         console.log(error);
       }
@@ -51,20 +52,15 @@ export default function Movies() {
     return (
       <>
         <SearchBox onChange={updateQueryString} />
-        {movies.length > 0 && (
+        {totalPages === 0 ? (
+          <h2>No results found</h2>
+        ) : (
           <Gallery>
             {movies.map(({ id, title, poster_path }) => {
               return (
                 <GalleryItem key={id}>
                   <LinkStyled to={`/movies/${id}`} state={location} key={id}>
-                    <Img
-                      src={
-                        poster_path
-                          ? `https://image.tmdb.org/t/p/w300${poster_path} `
-                          : noPicture
-                      }
-                      alt={title}
-                    />
+                    <Img src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path} ` : noPicture} alt={title} />
                     <Title>{title ? title : ' No information'}</Title>
                   </LinkStyled>
                 </GalleryItem>
