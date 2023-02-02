@@ -19,8 +19,6 @@ const StyledLink = styled(Link)`
 `;
 
 export const BackLink = ({ to, children }) => {
-  console.log('to :>> ', to);
-  console.log('children :>> ', children);
   return (
     <StyledLink to={to}>
       <HiArrowLeft size="24" />

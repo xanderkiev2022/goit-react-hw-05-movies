@@ -17,7 +17,6 @@ export default function SearchBox({ onChange }) {
       return;
     }
     onChange(searchQuery.trim());
-    console.log('searchQuery :>> ', searchQuery);
     setSearchQuery('');
   };
 

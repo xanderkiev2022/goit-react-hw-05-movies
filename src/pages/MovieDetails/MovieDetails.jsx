@@ -10,13 +10,6 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from || '/');
-  // const backLinkHref = location?.state?.from ?? '/';
-  // const backLinkHref = location?.state ?? '/';
-  // const backLinkHref = location ?? '/';
-
-  // console.log('location?.state?.from :>> ', location?.state?.from);
-  // console.log('location?.state :>> ', location?.state);
-  // console.log('location :>> ', location);
 
   useEffect(() => {
     fetchMoviesById(movieId).then(setMovie);
