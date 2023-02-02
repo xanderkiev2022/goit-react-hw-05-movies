@@ -61,7 +61,7 @@ export default function Movies() {
             {movies.map(({ id, title, poster_path }) => {
               return (
                 <GalleryItem key={id}>
-                  <LinkStyled to={`/movies/${id}`} state={location} key={id}>
+                  <LinkStyled to={`/movies/${id}`} state={{ from: location }} key={id}>
                     <Img src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path} ` : noPicture} alt={title} />
                     <Title>{title ? title : ' No information'}</Title>
                   </LinkStyled>

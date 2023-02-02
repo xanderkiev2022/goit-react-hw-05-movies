@@ -9,7 +9,14 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state || '/';
+  const backLinkHref = useRef(location.state?.from || '/');
+  // const backLinkHref = location?.state?.from ?? '/';
+  // const backLinkHref = location?.state ?? '/';
+  // const backLinkHref = location ?? '/';
+
+  // console.log('location?.state?.from :>> ', location?.state?.from);
+  // console.log('location?.state :>> ', location?.state);
+  // console.log('location :>> ', location);
 
   useEffect(() => {
     fetchMoviesById(movieId).then(setMovie);
@@ -21,7 +28,7 @@ export default function MovieDetails() {
 
   return (
     <>
-      <BackLink to={backLinkHref}>Back to movies</BackLink>
+      <BackLink to={backLinkHref.current}>Back to movies</BackLink>
       <Wrapper>
         <div>
           <Img src={movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : noPicture} alt={movie?.title} />
