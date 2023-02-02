@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const API_KEY = '6f3a72a470b06bab99f8d69f54b4e2d3';
@@ -49,20 +48,4 @@ export const fetchReviews = async searchQuery => {
   } catch (error) {
     console.error(error);
   }
-};
-
-fetchTrendMovies.propTypes = {
-  searchQuery: PropTypes.string,
-};
-fetchMoviesbyName.propTypes = {
-  searchQuery: PropTypes.string.isRequired,
-};
-fetchMoviesById.propTypes = {
-  searchQuery: PropTypes.string.isRequired,
-};
-fetchCast.propTypes = {
-  searchQuery: PropTypes.string.isRequired,
-};
-fetchReviews.propTypes = {
-  searchQuery: PropTypes.string.isRequired,
 };

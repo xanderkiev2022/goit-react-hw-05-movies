@@ -36,9 +36,8 @@ export default function Home() {
     }
     const getTrendMovies = async () => {
       try {
-        const { results, total_pages } = await fetchTrendMovies(page);
+        const { results } = await fetchTrendMovies(page);
         setTrendMovies(prevData => [...prevData, ...results]);
-        setTotalPages(total_pages);
       } catch (error) {
         console.log(error);
       }

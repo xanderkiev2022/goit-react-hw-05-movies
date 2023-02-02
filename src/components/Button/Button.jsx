@@ -4,12 +4,7 @@ import { Button, Div } from './Button.styled';
 export const ButtonLoadMore = ({ loadMore }) => {
   return (
     <Div>
-      <Button
-        type="button"
-        onClick={() => {
-          loadMore();
-        }}
-      >
+      <Button type="button" onClick={loadMore}>
         Load more
       </Button>
     </Div>

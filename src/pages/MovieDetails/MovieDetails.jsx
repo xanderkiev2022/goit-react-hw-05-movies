@@ -1,24 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { fetchMoviesById } from 'service/moviesApi';
-import {
-  Wrapper,
-  Img,
-  Info,
-  Title,
-  H3,
-  Text,
-  StyledLink,
-  ExtraMenu,
-} from './Movie.details.styled';
+import { Wrapper, Img, Info, Title, H3, Text, StyledLink, ExtraMenu } from './MovieDetails.styled';
 import { BackLink } from 'components/BackLink';
-import noPicture from '../images/no_picture.jpg';
+import noPicture from '../../images/no_picture.jpg';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const backLinkHref = location?.state ?? '/';
+  const backLinkHref = location.state || '/';
 
   useEffect(() => {
     fetchMoviesById(movieId).then(setMovie);
@@ -33,14 +24,7 @@ export default function MovieDetails() {
       <BackLink to={backLinkHref}>Back to movies</BackLink>
       <Wrapper>
         <div>
-          <Img
-            src={
-              movie.poster_path
-                ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-                : noPicture
-            }
-            alt={movie?.title}
-          />
+          <Img src={movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : noPicture} alt={movie?.title} />
         </div>
         <Info>
           <Title>{movie?.title}</Title>

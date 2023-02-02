@@ -30,5 +30,5 @@ export default function SearchBox({ onChange }) {
 }
 
 SearchBox.propTypes = {
-  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 };
