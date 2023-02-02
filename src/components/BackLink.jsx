@@ -1,4 +1,4 @@
-import PropTypes, { object, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import { HiArrowLeft } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
