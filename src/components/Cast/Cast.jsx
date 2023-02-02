@@ -24,30 +24,28 @@ export default function Cast() {
     <>
       <Wrapper>
         <List>
-          {movieCast
-            ? movieCast.map(actor => {
-                return (
-                  <Item key={actor.id}>
-                    <Img
-                      src={
-                        actor.profile_path
-                          ? `https://image.tmdb.org/t/p/w300${actor.profile_path} `
-                          : noPicture
-                      }
-                      alt={actor.original_name}
-                    />
-                    <InnerWrapper>
-                      <H3>{actor.original_name}</H3>
+          {movieCast.length === 0 ? (
+            <h2>No actors found</h2>
+          ) : (
+            movieCast.map(actor => {
+              return (
+                <Item key={actor.id}>
+                  <Img
+                    src={actor.profile_path ? `https://image.tmdb.org/t/p/w300${actor.profile_path} ` : noPicture}
+                    alt={actor.original_name}
+                  />
+                  <InnerWrapper>
+                    <H3>{actor.original_name}</H3>
 
-                      <H4>
-                        Character:
-                        {' ' + actor.character}
-                      </H4>
-                    </InnerWrapper>
-                  </Item>
-                );
-              })
-            : 'Something went wrong'}
+                    <H4>
+                      Character:
+                      {' ' + actor.character}
+                    </H4>
+                  </InnerWrapper>
+                </Item>
+              );
+            })
+          )}
         </List>
       </Wrapper>
     </>
