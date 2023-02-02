@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { object, string } from 'prop-types';
 import { HiArrowLeft } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -19,6 +19,8 @@ const StyledLink = styled(Link)`
 `;
 
 export const BackLink = ({ to, children }) => {
+  console.log('to :>> ', to);
+  console.log('children :>> ', children);
   return (
     <StyledLink to={to}>
       <HiArrowLeft size="24" />
@@ -28,6 +30,6 @@ export const BackLink = ({ to, children }) => {
 };
 
 BackLink.propTypes = {
-  to: PropTypes.number.isRequired,
-  children: PropTypes.array.isRequired,
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  children: PropTypes.string.isRequired,
 };
