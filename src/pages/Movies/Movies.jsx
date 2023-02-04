@@ -2,9 +2,9 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchMoviesbyName } from 'service/moviesApi';
 import SearchBox from 'components/SearchBox/SearchBox';
-import { Gallery, GalleryItem, Img, LinkStyled, Title } from './Home/Home.styled';
+import { Gallery, GalleryItem, Img, LinkStyled, Title } from '../Home/Home.styled';
 import { useContextHook } from 'components/Context';
-import noPicture from '../images/no_picture.jpg';
+import noPicture from '../../images/no_picture.jpg';
 
 export default function Movies() {
   const { movies, setMovies } = useContextHook();

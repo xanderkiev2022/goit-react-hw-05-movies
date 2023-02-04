@@ -9,7 +9,6 @@ export default function Home() {
   const location = useLocation();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
   };
